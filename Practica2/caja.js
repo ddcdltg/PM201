@@ -18,7 +18,7 @@ let pedidos = [];
 // Total acumulado
 let total = 0;
 
-// MOSTRAR PRODUCTOS
+// Mostrar productos
 function mostrarProductos() {
 
     console.log("\nPRODUCTOS:");

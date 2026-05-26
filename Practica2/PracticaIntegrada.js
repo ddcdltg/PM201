@@ -5,8 +5,7 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-// Menú de pruema
-
+// Menú de prueba
 let productos = [
     { nombre: "Café", precio: 45 },
     { nombre: "Pan", precio: 30 },

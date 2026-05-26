@@ -31,10 +31,6 @@ export class Pedido {
         return total;
     }
 
-    // Uso callback 
-    procesarPedido(productos_pedidos, procesa() {
-        console.log("Pedido realizado correctamente.");
-    });
 }
 
 
