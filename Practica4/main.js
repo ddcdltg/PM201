@@ -16,17 +16,29 @@ let pedidos = new Pedido(lista_productos);
 
 const prompt = promptSync();
 
-// Función que recibe un callback
+// Callback cuando el pedido está listo
+function pedidoListo() {
+
+    console.log("Pedido listo.");
+
+    menu_cajas();
+}
+
+// Callback cuando el pedido es cancelado
+function pedidoCancelado() {
+
+    console.log("Pedido cancelado.");
+
+    menu_cajas();
+}
+
+// Función principal que recibe un callback
 function procesarPedido(producto, callback) {
-    // Muestra qué pedido se está procesando
-    console.log(`Procesando pedido #${producto} `);
 
-// Espera 3 segundos antes de ejecutar el callback
-    setTimeout(() => {
+    console.log(`Procesando pedido de ${producto}...`);
 
-        callback();
-
-    }, 3000);
+    // Espera 3 segundos
+    setTimeout(callback, 3000);
 }
 
 function crear_promociones (promociones, productos, nuevo_precio) {
@@ -113,53 +125,53 @@ function menu_cajas () {
     } 
     
     else if (entrada == 2) {
-        // Muestra los productos disponibles
+
+        // Muestra productos disponibles
         lista_productos.ver_productos();
 
-        // Pide al usuario el ID del producto
+        // Solicita producto y cantidad
         let indice = prompt("Porfavor ingrese el ID del producto: ");
-
-         // Pide la cantidad del producto
         let cantidad = prompt("Porfavor ingrese cantidad: ");
 
-        // Agrega el pedido al arreglo productos_pedidos
+        // Agrega el pedido
         pedidos.agregar_pedido(indice, cantidad);
 
-        // Obtiene la posición del último pedido agregado
+        // Obtiene el último pedido agregado
         let ultimoPedido = pedidos.productos_pedidos.length - 1;
 
-        // Obtiene el nombre del producto del último pedido
+        // Obtiene el nombre del producto
         let producto =
         pedidos.productos_pedidos[ultimoPedido].producto;
 
-         // Pregunta si el pedido será realizado o cancelado
+        // Solicita acción sobre el pedido
         let opcion = prompt(`
         1. Realizar pedido.
         2. Cancelar pedido.
         Seleccione opción: `);
 
+        // Si el pedido será realizado
         if (opcion == 1) {
-            //si el usuario selecciona la opcion 1
-            // llama a la función procesarPedido y manda un callback
-            procesarPedido(producto, () => {
-                
-            // este código se ejecuta cuando callback() es llamado
-                console.log("Pedido listo.");
-            });
 
-        } else if (opcion == 2) {
-            //se manda un callback para cancelar
-            procesarPedido(producto, () => {
-                console.log("Pedido cancelado.");
-            });
+            // Envía la función pedidoListo como callback
+            procesarPedido(producto, pedidoListo);
 
-        } else {
-            // si la opción no existe
-            console.log("Opción inválida.");
         }
 
-        //regresa al menú de Caja
-        menu_cajas();
+        // Si el pedido será cancelado
+        else if (opcion == 2) {
+
+            // Envía la función pedidoCancelado como callback
+            procesarPedido(producto, pedidoCancelado);
+
+        }
+
+        // Opción inválida
+        else {
+
+            console.log("Opción inválida.");
+
+            menu_cajas();
+        }
     }
 
     else if (entrada == 3) {
