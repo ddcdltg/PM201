@@ -12,13 +12,8 @@ export default function App() {
     <View style={styles.container}>
       
       <Image source={require('./assets/wave.png')}/>
-      <Text>Hello Word React Native</Text>
-      <Text>---------------------</Text>
-      <Wave/>
-      <Text>---------------------</Text>
-      <Wave2/>
-      <Text>---------------------</Text>
-      <Perfil/>
+      <Perfil nombre="Dalixia" carrera="ISC" materia="PM" cuatrimestre="Noveno" />
+      <Perfil nombre="Regina" carrera="ISC" materia="POO" cuatrimestre="Noveno" />
       <StatusBar style="auto" />
 
     </View>
