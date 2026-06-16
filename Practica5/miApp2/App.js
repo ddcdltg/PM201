@@ -12,8 +12,10 @@ export default function App() {
     <View style={styles.container}>
       
       <Image source={require('./assets/wave.png')}/>
-      <Perfil nombre="Dalixia" carrera="ISC" materia="PM" cuatrimestre="Noveno" />
-      <Perfil nombre="Regina" carrera="ISC" materia="POO" cuatrimestre="Noveno" />
+      <Perfil style={styles.tarjetaAzul} nombre="Dalixia" carrera="ISC" materia="PM" cuatrimestre="Noveno" />
+      <Perfil style={styles.tarjetaAmarilla} nombre="Regina" carrera="ISC" materia="POO" cuatrimestre="Noveno" />
+      <Perfil style={styles.tarjetaAzul} nombre="Dalixia" carrera="ISC" materia="PM" cuatrimestre="Noveno" />
+
       <StatusBar style="auto" />
 
     </View>
@@ -26,6 +28,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    flexDirection: 'row',
   },
+
+  tarjetaAmarilla:{backgroundColor:'#f1eaa4'},
+  tarjetaAzul:{backgroundColor:'#bec8f4'},
 });
