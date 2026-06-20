@@ -46,7 +46,7 @@ export const Perfil = ({nombre,carrera,materia,cuatrimestre, style}) => {
 const estilos= StyleSheet.create({
   nombre:{
     fontSize:24,
-    fontWeight:600,
+    fontWeight:'600',
     textTransform:'uppercase',
   }, /* todos los objetos se separan con una (,) */
   carrera:{
