@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Image, Button} from 'react-native';
 import React,{useEffect, useState} from 'react'
 import TarjetasScreen from './TarjetasScreen'
 import Componente1 from './Componente1'
+import Componente2 from './Componente2'
 import {ImagenFondo} from './ImagenFondo';
 import { SplashScreen } from './SplashScreen';
 import { Home } from './Home';
@@ -26,6 +27,8 @@ export default function MenuScreen() {
             return <TarjetasScreen/>;
         case 'componente1':
             return <Componente1/>;
+        case 'componente2':
+            return <Componente2/>;
         case 'imagenFondo':
             return <ImagenFondo style={styles.container}/>
         case 'home':
@@ -40,6 +43,10 @@ export default function MenuScreen() {
                         <Button title="Práctica Tajetas" onPress={()=>setScreen('tarjetas')}></Button>
 
                         <Button title="Práctica Componente1" onPress={()=>setScreen('componente1')}></Button>
+
+                        <Button title="Práctica Componente2" onPress={()=>setScreen('componente2')}></Button>
+
+                        <Button title="Práctica Componente3" onPress={()=>setScreen('componente1')}></Button>
 
                         <Button title="Imagen Fondo" onPress={()=>setScreen('imagenFondo')}/>
 

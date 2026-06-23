@@ -12,7 +12,7 @@ export const ImagenFondo = (style) => {
     );
 }
 
-const styles = StyleSheet({
+const styles = StyleSheet.create({
     container: {
         flex: 1,
         width: '100%',
