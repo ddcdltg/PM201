@@ -7,6 +7,8 @@ import Componente1 from './Componente1'
 import Componente2 from './Componente2'
 import Componente3 from './Componente3'
 import Componente4 from './Componente4'
+import Componente5 from './Componente5'
+import Componente6 from './Componente6'
 import {ImagenFondo} from './ImagenFondo';
 import { SplashScreen } from './SplashScreen';
 import { Home } from './Home';
@@ -35,6 +37,10 @@ export default function MenuScreen() {
             return <Componente3/>;
         case 'componente4':
             return <Componente4/>;
+        case 'componente5':
+            return <Componente5/>;
+        case 'componente6':
+            return <Componente6/>;
         case 'imagenFondo':
             return <ImagenFondo style={styles.container}/>
         case 'home':
@@ -50,11 +56,15 @@ export default function MenuScreen() {
 
                         <Button title="Práctica Componente1" onPress={()=>setScreen('componente1')}></Button>
 
-                        <Button title="Práctica Componente2" onPress={()=>setScreen('componente2')}></Button>
+                        <Button title="Práctica SafeArea y ScrollView" onPress={()=>setScreen('componente2')}></Button>
 
-                        <Button title="Práctica Componente3" onPress={()=>setScreen('componente3')}></Button>
+                        <Button title="Práctica PressableScreen" onPress={()=>setScreen('componente3')}></Button>
 
-                        <Button title="Práctica Componente4" onPress={()=>setScreen('componente4')}></Button>
+                        <Button title="Práctica SwitchScreen" onPress={()=>setScreen('componente4')}></Button>
+
+                        <Button title="Práctica TextInput" onPress={()=>setScreen('componente5')}></Button>
+
+                        <Button title="Práctica Alert" onPress={()=>setScreen('componente6')}></Button>
 
                         <Button title="Imagen Fondo" onPress={()=>setScreen('imagenFondo')}/>
 

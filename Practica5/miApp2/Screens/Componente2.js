@@ -1,3 +1,4 @@
+/* SafeArea y ScrollView*/
 import React, { useState } from 'react';
 import { SafeAreaView, ScrollView, View, Text, Button } from 'react-native';
 
