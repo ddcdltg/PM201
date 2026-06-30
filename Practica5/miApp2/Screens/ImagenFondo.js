@@ -1,5 +1,5 @@
 import {ImageBackground} from 'react-native';
-import {Perfil} from '../components/Perfil';
+import {Perfil} from '../Components/Perfil';
 import {View, StyleSheet} from 'react-native';
 
 export const ImagenFondo = (style) => {

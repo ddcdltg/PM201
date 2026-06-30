@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image} from 'react-native';
 /* import { Wave } from './components/Wave';
 import { Wave2 } from './components/Wave2'; */
-import {Perfil} from '../components/Perfil';
+import {Perfil} from '../Components/Perfil';
 
 //Zona 2: Main - Componentes
 export default function TarjetasScreen() {
