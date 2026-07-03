@@ -11,6 +11,7 @@ import Componente5 from './Componente5'
 import Componente6 from './Componente6'
 import Componente7 from './Componente7'
 import Componente8 from './Componente8'
+import Componente10 from './Componente10'
 import {ImagenFondo} from './ImagenFondo';
 import { SplashScreen } from './SplashScreen';
 import { Home } from './Home';
@@ -47,6 +48,8 @@ export default function MenuScreen() {
             return <Componente7 setScreen={setScreen}/>;
         case 'componente8':
             return <Componente8/>;
+        case 'componente10':
+            return <Componente10/>;
         case 'imagenFondo':
             return <ImagenFondo style={styles.container}/>
         case 'home':
@@ -77,6 +80,8 @@ export default function MenuScreen() {
                         <Button title="Práctica FlatList" onPress={()=>setScreen('componente7')}></Button>
 
                         <Button title="Práctica SectionList" onPress={()=>setScreen('componente8')}></Button>
+
+                        <Button title="Práctica KeyboardAvoidingView y ActivityIndicator" onPress={()=>setScreen('componente10')}></Button>
 
                         <Button title="Imagen Fondo" onPress={()=>setScreen('imagenFondo')}/>
 
