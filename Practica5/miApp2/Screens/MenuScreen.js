@@ -15,6 +15,7 @@ import Componente10 from './Componente10'
 import {ImagenFondo} from './ImagenFondo';
 import { SplashScreen } from './SplashScreen';
 import { Home } from './Home';
+import Platillos from './Platillos';
 
 //Zona 2: Main - Componentes
 export default function MenuScreen() {
@@ -56,6 +57,9 @@ export default function MenuScreen() {
             return <Home/>
         case 'splashScreen':
             return <SplashScreen/>
+
+        case 'examen':
+            return <Platillos/>
         case 'menu':
             default:
                 return (
@@ -86,6 +90,8 @@ export default function MenuScreen() {
                         <Button title="Imagen Fondo" onPress={()=>setScreen('imagenFondo')}/>
 
                         <Button title="Splash Screen" onPress={()=>setScreen('splashScreen')}/>
+
+                        <Button title='Examen' onPress={() => setScreen('examen')}/>
                     </View>
                 );//Return
     }//Switch
