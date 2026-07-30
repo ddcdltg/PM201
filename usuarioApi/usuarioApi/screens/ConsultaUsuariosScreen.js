@@ -1,6 +1,8 @@
 
-import {SafeAreaView,View,Text,FlatList,StyleSheet } from 'react-native';
-import React, {useState, useEffect} from 'react';
+import {SafeAreaView,View,Text,FlatList,StyleSheet, TouchableOpacity } from 'react-native';
+import React, {useState, useCallback } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
+import { router } from "expo-router";
 
 export default function ConsultaUsuariosScreen() {
 
@@ -19,7 +21,7 @@ export default function ConsultaUsuariosScreen() {
     }
   };
 
-  useEffect(() => {obtenerUsuarios();}, []);
+useFocusEffect(useCallback(() => {obtenerUsuarios();}, []));
 
   const renderTarjeta = ({ item }) => (
     <View style={styles.card}>
@@ -31,6 +33,18 @@ export default function ConsultaUsuariosScreen() {
       <Text style={styles.info}>
         Edad: {item.edad} años
       </Text>
+
+      <TouchableOpacity
+        style={styles.boton}
+        onPress={() =>
+          router.push({
+            pathname: "/detalles",
+            params: item
+          })
+        }
+      >
+        <Text style={styles.textoBoton}>Ver detalles</Text>
+      </TouchableOpacity>
 
     </View>
   );
@@ -104,5 +118,18 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#4B5563',
   },
+
+  boton: {
+    backgroundColor: "#2563EB",
+    padding: 12,
+    borderRadius: 10,
+    marginTop: 15,
+    alignItems: "center",
+},
+
+textoBoton: {
+    color: "#FFFFFF",
+    fontWeight: "bold",
+},
 
 });
