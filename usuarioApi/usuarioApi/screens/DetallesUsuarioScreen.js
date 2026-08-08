@@ -10,7 +10,7 @@ export default function DetallesUsuarioScreen() {
   const eliminarUsuario = async () => {
   try {
     const respuesta = await fetch(
-      `http://192.168.100.13:5000/v1/usuarios/${usuario.id}`,
+      `http://172.20.10.8:5000/v1/usuarios/${usuario.id}`,
       {
         method: "DELETE",
         headers: {
@@ -35,10 +35,6 @@ export default function DetallesUsuarioScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.titulo}>Detalles del Usuario</Text>
-
-      <TouchableOpacity onPress={() => router.back()}>
-        <Text style={styles.regresar}>← Regresar</Text>
-      </TouchableOpacity>
 
       <View style={styles.card}>
         <Text style={styles.info}>

@@ -1,6 +1,17 @@
 import React, { useState } from 'react';
-import { View, SafeAreaView, Text, TextInput, Pressable, TouchableOpacity, StyleSheet, Alert, Platform, } from 'react-native';
+import {
+  View,
+  SafeAreaView,
+  Text,
+  TextInput,
+  Pressable,
+  StyleSheet,
+  Alert,
+  Platform,
+} from 'react-native';
+
 import { useLocalSearchParams, router } from 'expo-router';
+
 
 export default function EditarUsuarioScreen() {
 
@@ -10,6 +21,7 @@ export default function EditarUsuarioScreen() {
   const [edad, setEdad] = useState(usuario.edad);
   const [cargando, setCargando] = useState(false);
 
+
   const mostrarMensaje = (titulo, mensaje) => {
     if (Platform.OS === 'web') {
       window.alert(`${titulo}\n\n${mensaje}`);
@@ -18,42 +30,53 @@ export default function EditarUsuarioScreen() {
     }
   };
 
+
   const actualizarUsuario = async () => {
 
     if (nombre.trim() === '' || edad.trim() === '') {
-      mostrarMensaje('Campos vacíos', 'Completa todos los campos.');
+      mostrarMensaje(
+        'Campos vacíos',
+        'Completa todos los campos.'
+      );
       return;
     }
+
 
     try {
 
       setCargando(true);
 
+
       const respuesta = await fetch(
-  `http://192.168.100.13:5000/v1/usuarios/${usuario.id}`,
-  {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Basic YWRtaW46MTIzNA==", 
-    },
-    body: JSON.stringify({
-      nombre,
-      edad: parseInt(edad),
-    }),
-  }
-);
+        `http://172.20.10.8:5000/v1/usuarios/${usuario.id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Basic YWRtaW46MTIzNA==",
+          },
+          body: JSON.stringify({
+            nombre,
+            edad: parseInt(edad),
+          }),
+        }
+      );
+
 
       const datos = await respuesta.json();
 
       console.log(datos);
+
 
       mostrarMensaje(
         'Éxito',
         'Los datos del usuario fueron actualizados.'
       );
 
-      router.back();
+
+      // Regresa usando la navegación Stack
+      router.replace("/(tabs)/consulta");
+
 
     } catch (error) {
 
@@ -64,6 +87,7 @@ export default function EditarUsuarioScreen() {
         'No fue posible actualizar el usuario.'
       );
 
+
     } finally {
 
       setCargando(false);
@@ -72,19 +96,18 @@ export default function EditarUsuarioScreen() {
 
   };
 
+
   return (
 
     <SafeAreaView style={styles.container}>
 
       <View style={styles.card}>
 
+
         <Text style={styles.titulo}>
           Actualizar Usuario
         </Text>
 
-        <TouchableOpacity onPress={() => router.back()}>
-  <Text>← Regresar</Text>
-</TouchableOpacity>
 
         <TextInput
           style={styles.input}
@@ -93,6 +116,7 @@ export default function EditarUsuarioScreen() {
           onChangeText={setNombre}
         />
 
+
         <TextInput
           style={styles.input}
           placeholder="Edad"
@@ -100,6 +124,7 @@ export default function EditarUsuarioScreen() {
           value={edad}
           onChangeText={setEdad}
         />
+
 
         <Pressable
           style={styles.boton}
@@ -113,6 +138,7 @@ export default function EditarUsuarioScreen() {
 
         </Pressable>
 
+
       </View>
 
     </SafeAreaView>
@@ -120,6 +146,7 @@ export default function EditarUsuarioScreen() {
   );
 
 }
+
 
 const styles = StyleSheet.create({
 
@@ -130,6 +157,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
   },
+
 
   card: {
     width: '100%',
@@ -147,6 +175,7 @@ const styles = StyleSheet.create({
     },
   },
 
+
   titulo: {
     fontSize: 26,
     fontWeight: 'bold',
@@ -154,6 +183,7 @@ const styles = StyleSheet.create({
     marginBottom: 25,
     color: '#1F2937',
   },
+
 
   input: {
     height: 50,
@@ -166,31 +196,20 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 
+
   boton: {
-    backgroundColor: '#FBBF24',
+    backgroundColor: '#2563EB',
     paddingVertical: 15,
     borderRadius: 10,
     alignItems: 'center',
     marginTop: 10,
   },
 
+
   textoBoton: {
     color: '#FFFFFF',
     fontSize: 17,
     fontWeight: 'bold',
   },
-
-  boton: {
-  backgroundColor: "#2563EB",
-  padding: 10,
-  borderRadius: 5,
-  alignItems: "center",
-  marginBottom: 15,
-},
-
-textoBoton: {
-  color: "white",
-  fontWeight: "bold",
-},
 
 });
